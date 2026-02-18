@@ -60,12 +60,14 @@ export const PrayerDashboard: React.FC<PrayerDashboardProps> = ({ data, loading,
       upcoming = { name: 'Fajr', time: timings.Fajr, diff };
     }
 
-    const hoursLeft = Math.floor(upcoming.diff / 60);
-    const minsLeft = upcoming.diff % 60;
     const secondsNow = now.getSeconds();
+    const secsRemaining = (60 - secondsNow) % 60;
+    const totalMinutesLeft = secsRemaining > 0 ? upcoming.diff - 1 : upcoming.diff;
+    const hoursLeft = Math.max(0, Math.floor(totalMinutesLeft / 60));
+    const minsLeft = Math.max(0, totalMinutesLeft % 60);
     
     // Simple countdown string
-    const timeLeft = `-${hoursLeft.toString().padStart(2, '0')}:${minsLeft.toString().padStart(2, '0')}:${(60 - secondsNow).toString().padStart(2, '0')}`;
+    const timeLeft = `-${hoursLeft.toString().padStart(2, '0')}:${minsLeft.toString().padStart(2, '0')}:${secsRemaining.toString().padStart(2, '0')}`;
 
     setNextPrayer({
       name: upcoming.name,
@@ -83,7 +85,7 @@ export const PrayerDashboard: React.FC<PrayerDashboardProps> = ({ data, loading,
     );
   }
 
-  if (error) {
+  if (error && !data) {
     return (
       <div className="flex flex-col items-center justify-center h-full p-8 text-center">
         <div className="bg-red-100 dark:bg-red-900/30 p-4 rounded-full mb-4">
