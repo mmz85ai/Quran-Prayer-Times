@@ -1,0 +1,7 @@
+{
+  "name": "Quran & Prayer Times",
+  "description": "A comprehensive Islamic companion app featuring accurate prayer times based on location, a full Quran reader with translations, and Qibla direction indicators.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
