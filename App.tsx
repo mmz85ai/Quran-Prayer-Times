@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Layout } from './components/Layout';
 import { PrayerDashboard } from './components/PrayerDashboard';
 import { QuranReader } from './components/QuranReader';
+import { Adhkar } from './components/Adhkar';
 import { Settings } from './components/Settings';
 import { fetchPrayerTimes } from './services/api';
 import { AppSettings, PrayerResponseData, UserLocation } from './types';
@@ -9,7 +10,7 @@ import { DEFAULT_LOCATION } from './constants';
 
 const App: React.FC = () => {
   // Navigation State
-  const [activeTab, setActiveTab] = useState<'prayer' | 'quran' | 'settings'>('prayer');
+  const [activeTab, setActiveTab] = useState<'prayer' | 'quran' | 'adhkar' | 'settings'>('prayer');
 
   // App Settings State
   const [settings, setSettings] = useState<AppSettings>(() => {
@@ -71,7 +72,7 @@ const App: React.FC = () => {
 
       // Fetch Prayer Times
       const data = await fetchPrayerTimes(lat, lng, settings.calculationMethod, settings.asrMethod);
-      
+
       if (data && data.data) {
         setPrayerData(data.data);
       } else {
@@ -92,16 +93,16 @@ const App: React.FC = () => {
   };
 
   return (
-    <Layout 
-      activeTab={activeTab} 
+    <Layout
+      activeTab={activeTab}
       setActiveTab={setActiveTab}
       isDark={settings.theme === 'dark'}
       toggleTheme={toggleTheme}
     >
       {activeTab === 'prayer' && (
-        <PrayerDashboard 
-          data={prayerData} 
-          loading={loading} 
+        <PrayerDashboard
+          data={prayerData}
+          loading={loading}
           error={error}
           locationName={locationName}
         />
@@ -109,8 +110,11 @@ const App: React.FC = () => {
       {activeTab === 'quran' && (
         <QuranReader />
       )}
+      {activeTab === 'adhkar' && (
+        <Adhkar />
+      )}
       {activeTab === 'settings' && (
-        <Settings 
+        <Settings
           settings={settings}
           updateSettings={updateSettings}
           isDark={settings.theme === 'dark'}
