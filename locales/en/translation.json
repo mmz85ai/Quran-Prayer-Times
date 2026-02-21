@@ -1,0 +1,82 @@
+{
+    "app": {
+        "title": "Quran & Prayer",
+        "detectingLocation": "Detecting Location...",
+        "currentLocation": "Current Location",
+        "locationDenied": "Location access denied. Using default (Makkah).",
+        "failedToLoad": "Failed to load prayer times. Please check your connection."
+    },
+    "nav": {
+        "prayer": "Prayer",
+        "quran": "Quran",
+        "adhkar": "Adhkar",
+        "settings": "Settings"
+    },
+    "prayer": {
+        "calculatingTimes": "Calculating prayer times...",
+        "locationError": "Location Error",
+        "retry": "Retry",
+        "nextPrayer": "Next Prayer",
+        "startsAt": "Starts at",
+        "upcoming": "Upcoming",
+        "fajr": "Fajr",
+        "sunrise": "Sunrise",
+        "dhuhr": "Dhuhr",
+        "asr": "Asr",
+        "maghrib": "Maghrib",
+        "isha": "Isha"
+    },
+    "quran": {
+        "searchPlaceholder": "Search Surah by name or number...",
+        "ayahs": "{{count}} Ayahs",
+        "bismillah": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
+    },
+    "adhkar": {
+        "dailyAdhkar": "Daily Adhkar",
+        "morningEvening": "Morning & Evening Supplications",
+        "morning": "Morning",
+        "evening": "Evening",
+        "morningAdhkar": "Morning Adhkar",
+        "eveningAdhkar": "Evening Adhkar",
+        "morningArabic": "أذكار الصباح",
+        "eveningArabic": "أذكار المساء",
+        "recommended": "Recommended",
+        "progress": "{{completed}} of {{total}} completed",
+        "progressResets": "Progress resets daily. Tap each supplication to count.",
+        "done": "Done",
+        "allCompleted": "Masha'Allah! All completed ✨",
+        "acceptSupplications": "May Allah accept your supplications",
+        "resetProgress": "Reset progress"
+    },
+    "settings": {
+        "title": "Settings",
+        "appearance": "Appearance",
+        "darkMode": "Dark Mode",
+        "darkModeDesc": "Easy on the eyes at night",
+        "language": "Language",
+        "languageDesc": "Choose your preferred language",
+        "english": "English",
+        "arabic": "العربية",
+        "prayerCalculation": "Prayer Calculation",
+        "calculationMethod": "Calculation Method",
+        "asrMethod": "Asr Method",
+        "asrMethodDesc": "Standard vs Hanafi",
+        "standard": "Standard",
+        "hanafi": "Hanafi",
+        "notifications": "Notifications",
+        "prayerAlerts": "Prayer Alerts",
+        "prayerAlertsDesc": "Get notified when it's time to pray",
+        "webNotice": "Note: On web, notifications require the browser to be open.",
+        "about": "Quran & Prayer Times v1.0",
+        "aboutDesc": "Based on the SOP for React Native, adapted for Web (React SPA). Data provided by Aladhan.com and AlQuran.cloud.",
+        "calcMethods": {
+            "1": "University of Islamic Sciences, Karachi",
+            "2": "Islamic Society of North America (ISNA)",
+            "3": "Muslim World League (MWL)",
+            "4": "Umm Al-Qura University, Makkah",
+            "5": "Egyptian General Authority of Survey",
+            "12": "Union Organization islamic de France",
+            "13": "Diyanet Isleri Baskanligi, Turkey"
+        }
+    }
+}

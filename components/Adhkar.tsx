@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Sun, Moon, RotateCcw, Check, BookOpen } from 'lucide-react';
 import { MORNING_ADHKAR, EVENING_ADHKAR, Dhikr, AdhkarCategory } from '../data/adhkarData';
 
@@ -33,6 +34,7 @@ const saveProgress = (progress: SavedProgress) => {
 };
 
 export const Adhkar: React.FC = () => {
+    const { t } = useTranslation();
     const [view, setView] = useState<'picker' | 'list'>('picker');
     const [category, setCategory] = useState<AdhkarCategory>('morning');
     const [progress, setProgress] = useState<SavedProgress>(loadProgress);
@@ -123,9 +125,9 @@ export const Adhkar: React.FC = () => {
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full mb-2">
                         <BookOpen className="text-emerald-600 dark:text-emerald-400" size={28} />
                     </div>
-                    <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Daily Adhkar</h2>
+                    <h2 className="text-2xl font-bold text-slate-800 dark:text-white">{t('adhkar.dailyAdhkar')}</h2>
                     <p className="text-sm text-slate-500 dark:text-slate-400">
-                        Morning & Evening Supplications
+                        {t('adhkar.morningEvening')}
                     </p>
                 </div>
 
@@ -145,13 +147,13 @@ export const Adhkar: React.FC = () => {
                                     <Sun className="text-white" size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-white">Morning</h3>
-                                    <p className="text-white/70 text-sm font-amiri text-lg">أذكار الصباح</p>
+                                    <h3 className="text-xl font-bold text-white">{t('adhkar.morning')}</h3>
+                                    <p className="text-white/70 text-sm font-amiri text-lg">{t('adhkar.morningArabic')}</p>
                                 </div>
                             </div>
                             {isMorningTime && (
                                 <span className="bg-white/25 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                    Recommended
+                                    {t('adhkar.recommended')}
                                 </span>
                             )}
                         </div>
@@ -159,7 +161,7 @@ export const Adhkar: React.FC = () => {
                         {/* Progress */}
                         <div className="mt-4">
                             <div className="flex justify-between text-white/80 text-xs mb-2">
-                                <span>{morningStats.completed} of {morningStats.total} completed</span>
+                                <span>{t('adhkar.progress', { completed: morningStats.completed, total: morningStats.total })}</span>
                                 <span>{morningStats.percentage}%</span>
                             </div>
                             <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
@@ -188,13 +190,13 @@ export const Adhkar: React.FC = () => {
                                     <Moon className="text-white" size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-white">Evening</h3>
-                                    <p className="text-white/70 text-sm font-amiri text-lg">أذكار المساء</p>
+                                    <h3 className="text-xl font-bold text-white">{t('adhkar.evening')}</h3>
+                                    <p className="text-white/70 text-sm font-amiri text-lg">{t('adhkar.eveningArabic')}</p>
                                 </div>
                             </div>
                             {!isMorningTime && (
                                 <span className="bg-white/25 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                    Recommended
+                                    {t('adhkar.recommended')}
                                 </span>
                             )}
                         </div>
@@ -202,7 +204,7 @@ export const Adhkar: React.FC = () => {
                         {/* Progress */}
                         <div className="mt-4">
                             <div className="flex justify-between text-white/80 text-xs mb-2">
-                                <span>{eveningStats.completed} of {eveningStats.total} completed</span>
+                                <span>{t('adhkar.progress', { completed: eveningStats.completed, total: eveningStats.total })}</span>
                                 <span>{eveningStats.percentage}%</span>
                             </div>
                             <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
@@ -217,7 +219,7 @@ export const Adhkar: React.FC = () => {
 
                 {/* Info */}
                 <p className="text-center text-xs text-slate-400 dark:text-slate-500 pt-2">
-                    Progress resets daily. Tap each supplication to count.
+                    {t('adhkar.progressResets')}
                 </p>
             </div>
         );
@@ -238,16 +240,16 @@ export const Adhkar: React.FC = () => {
                     </button>
                     <div className="text-center">
                         <h2 className="font-bold text-slate-800 dark:text-white">
-                            {isMorning ? 'Morning Adhkar' : 'Evening Adhkar'}
+                            {isMorning ? t('adhkar.morningAdhkar') : t('adhkar.eveningAdhkar')}
                         </h2>
                         <p className="text-xs text-slate-500 dark:text-slate-400 font-amiri">
-                            {isMorning ? 'أذكار الصباح' : 'أذكار المساء'}
+                            {isMorning ? t('adhkar.morningArabic') : t('adhkar.eveningArabic')}
                         </p>
                     </div>
                     <button
                         onClick={resetCategory}
                         className="p-2 -mr-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors text-slate-500 dark:text-slate-400"
-                        title="Reset progress"
+                        title={t('adhkar.resetProgress')}
                     >
                         <RotateCcw size={20} />
                     </button>
@@ -256,16 +258,16 @@ export const Adhkar: React.FC = () => {
                 {/* Progress Bar */}
                 <div className="px-4 pb-3">
                     <div className="flex justify-between items-center text-xs text-slate-500 dark:text-slate-400 mb-1.5">
-                        <span>{stats.completed} of {stats.total} completed</span>
+                        <span>{t('adhkar.progress', { completed: stats.completed, total: stats.total })}</span>
                         <span className="font-semibold text-emerald-600 dark:text-emerald-400">{stats.percentage}%</span>
                     </div>
                     <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                         <div
                             className={`h-full rounded-full transition-all duration-500 ${stats.percentage === 100
-                                    ? 'bg-gradient-to-r from-emerald-500 to-teal-400'
-                                    : isMorning
-                                        ? 'bg-gradient-to-r from-amber-500 to-orange-400'
-                                        : 'bg-gradient-to-r from-indigo-500 to-purple-500'
+                                ? 'bg-gradient-to-r from-emerald-500 to-teal-400'
+                                : isMorning
+                                    ? 'bg-gradient-to-r from-amber-500 to-orange-400'
+                                    : 'bg-gradient-to-r from-indigo-500 to-purple-500'
                                 }`}
                             style={{ width: `${stats.percentage}%` }}
                         />
@@ -280,10 +282,10 @@ export const Adhkar: React.FC = () => {
                         <Check className="text-emerald-600 dark:text-emerald-400" size={24} />
                     </div>
                     <p className="text-emerald-800 dark:text-emerald-300 font-semibold">
-                        Masha'Allah! All completed ✨
+                        {t('adhkar.allCompleted')}
                     </p>
                     <p className="text-emerald-600 dark:text-emerald-400 text-xs mt-1">
-                        May Allah accept your supplications
+                        {t('adhkar.acceptSupplications')}
                     </p>
                 </div>
             )}
@@ -299,8 +301,8 @@ export const Adhkar: React.FC = () => {
                         <div
                             key={dhikr.id}
                             className={`relative rounded-2xl border overflow-hidden transition-all duration-300 ${isComplete
-                                    ? 'bg-emerald-50/50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-800/50 opacity-70'
-                                    : 'bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800'
+                                ? 'bg-emerald-50/50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-800/50 opacity-70'
+                                : 'bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800'
                                 }`}
                         >
                             {/* Card Content */}
@@ -308,8 +310,8 @@ export const Adhkar: React.FC = () => {
                                 {/* Index & Reference */}
                                 <div className="flex items-center justify-between">
                                     <span className={`text-xs font-mono px-2 py-0.5 rounded-md ${isComplete
-                                            ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'
-                                            : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
+                                        ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'
+                                        : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
                                         }`}>
                                         {index + 1}/{adhkarList.length}
                                     </span>
@@ -319,12 +321,12 @@ export const Adhkar: React.FC = () => {
                                 </div>
 
                                 {/* Arabic Text */}
-                                <p className="text-right font-amiri text-2xl leading-[2.2] text-slate-800 dark:text-slate-100" dir="rtl">
+                                <p className="font-amiri text-2xl leading-[2.2] text-slate-800 dark:text-slate-100" dir="rtl">
                                     {dhikr.arabic}
                                 </p>
 
                                 {/* Translation */}
-                                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-light">
+                                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-light" dir="ltr">
                                     {dhikr.translation}
                                 </p>
 
@@ -340,7 +342,7 @@ export const Adhkar: React.FC = () => {
                                                     style={{ width: `${((originalCount - remaining) / originalCount) * 100}%` }}
                                                 />
                                             </div>
-                                            <span className="text-[10px] text-slate-400 font-mono">
+                                            <span className="text-[10px] text-slate-400 font-mono" dir="ltr">
                                                 {originalCount - remaining}/{originalCount}
                                             </span>
                                         </div>
@@ -352,16 +354,16 @@ export const Adhkar: React.FC = () => {
                                         onClick={() => handleTap(dhikr)}
                                         disabled={isComplete}
                                         className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-95 ${isComplete
-                                                ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 cursor-default'
-                                                : isMorning
-                                                    ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-900/30'
-                                                    : 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/30'
+                                            ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 cursor-default'
+                                            : isMorning
+                                                ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-900/30'
+                                                : 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/30'
                                             }`}
                                     >
                                         {isComplete ? (
                                             <>
                                                 <Check size={16} />
-                                                <span>Done</span>
+                                                <span>{t('adhkar.done')}</span>
                                             </>
                                         ) : (
                                             <>

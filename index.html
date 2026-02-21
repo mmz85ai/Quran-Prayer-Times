@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
   <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
   <script>
     tailwind.config = {
@@ -17,7 +17,7 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ['Inter', 'Noto Sans Arabic', 'sans-serif'],
             amiri: ['Amiri', 'serif'],
           },
           colors: {
@@ -50,6 +50,84 @@
       /* IE and Edge */
       scrollbar-width: none;
       /* Firefox */
+    }
+
+    /* RTL-aware utilities */
+    [dir="rtl"] .space-x-1> :not([hidden])~ :not([hidden]),
+    [dir="rtl"] .space-x-2> :not([hidden])~ :not([hidden]),
+    [dir="rtl"] .space-x-3> :not([hidden])~ :not([hidden]),
+    [dir="rtl"] .space-x-4> :not([hidden])~ :not([hidden]) {
+      --tw-space-x-reverse: 1;
+    }
+
+    [dir="rtl"] .-ml-2 {
+      margin-left: 0;
+      margin-right: -0.5rem;
+    }
+
+    [dir="rtl"] .-mr-2 {
+      margin-right: 0;
+      margin-left: -0.5rem;
+    }
+
+    [dir="rtl"] .ml-auto {
+      margin-left: initial;
+      margin-right: auto;
+    }
+
+    [dir="rtl"] .mr-2 {
+      margin-right: initial;
+      margin-left: 0.5rem;
+    }
+
+    /* Flip directional positioning */
+    [dir="rtl"] .left-1 {
+      left: auto;
+      right: 0.25rem;
+    }
+
+    [dir="rtl"] .left-3 {
+      left: auto;
+      right: 0.75rem;
+    }
+
+    [dir="rtl"] .left-7 {
+      left: auto;
+      right: 1.75rem;
+    }
+
+    [dir="rtl"] .right-0 {
+      right: auto;
+      left: 0;
+    }
+
+    [dir="rtl"] .-mt-4.-mr-4 {
+      margin-right: initial;
+      margin-left: -1rem;
+      right: auto;
+      left: 0;
+    }
+
+    [dir="rtl"] .-mb-4.-ml-4 {
+      margin-left: initial;
+      margin-right: -1rem;
+      left: auto;
+      right: 0;
+    }
+
+    /* Text alignment */
+    [dir="rtl"] .text-left {
+      text-align: right;
+    }
+
+    [dir="rtl"] .text-right {
+      text-align: left;
+    }
+
+    /* Padding overrides */
+    [dir="rtl"] .pl-10 {
+      padding-left: initial;
+      padding-right: 2.5rem;
     }
   </style>
 </head>

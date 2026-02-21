@@ -1,0 +1,82 @@
+{
+    "app": {
+        "title": "القرآن والصلاة",
+        "detectingLocation": "جارٍ تحديد الموقع...",
+        "currentLocation": "الموقع الحالي",
+        "locationDenied": "تم رفض الوصول إلى الموقع. يتم استخدام الافتراضي (مكة المكرمة).",
+        "failedToLoad": "فشل تحميل أوقات الصلاة. يرجى التحقق من اتصالك."
+    },
+    "nav": {
+        "prayer": "الصلاة",
+        "quran": "القرآن",
+        "adhkar": "الأذكار",
+        "settings": "الإعدادات"
+    },
+    "prayer": {
+        "calculatingTimes": "جارٍ حساب أوقات الصلاة...",
+        "locationError": "خطأ في الموقع",
+        "retry": "إعادة المحاولة",
+        "nextPrayer": "الصلاة القادمة",
+        "startsAt": "تبدأ في",
+        "upcoming": "القادمة",
+        "fajr": "الفجر",
+        "sunrise": "الشروق",
+        "dhuhr": "الظهر",
+        "asr": "العصر",
+        "maghrib": "المغرب",
+        "isha": "العشاء"
+    },
+    "quran": {
+        "searchPlaceholder": "ابحث عن سورة بالاسم أو الرقم...",
+        "ayahs": "{{count}} آيات",
+        "bismillah": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
+    },
+    "adhkar": {
+        "dailyAdhkar": "الأذكار اليومية",
+        "morningEvening": "أذكار الصباح والمساء",
+        "morning": "الصباح",
+        "evening": "المساء",
+        "morningAdhkar": "أذكار الصباح",
+        "eveningAdhkar": "أذكار المساء",
+        "morningArabic": "أذكار الصباح",
+        "eveningArabic": "أذكار المساء",
+        "recommended": "مُوصى به",
+        "progress": "{{completed}} من {{total}} مكتمل",
+        "progressResets": "يتم إعادة تعيين التقدم يوميًا. اضغط على كل ذكر للعد.",
+        "done": "تم",
+        "allCompleted": "ما شاء الله! اكتمل الجميع ✨",
+        "acceptSupplications": "تقبل الله أدعيتكم",
+        "resetProgress": "إعادة تعيين التقدم"
+    },
+    "settings": {
+        "title": "الإعدادات",
+        "appearance": "المظهر",
+        "darkMode": "الوضع الداكن",
+        "darkModeDesc": "مريح للعينين في الليل",
+        "language": "اللغة",
+        "languageDesc": "اختر لغتك المفضلة",
+        "english": "English",
+        "arabic": "العربية",
+        "prayerCalculation": "حساب الصلاة",
+        "calculationMethod": "طريقة الحساب",
+        "asrMethod": "طريقة العصر",
+        "asrMethodDesc": "قياسي مقابل حنفي",
+        "standard": "قياسي",
+        "hanafi": "حنفي",
+        "notifications": "الإشعارات",
+        "prayerAlerts": "تنبيهات الصلاة",
+        "prayerAlertsDesc": "تلقي إشعارات عند حلول وقت الصلاة",
+        "webNotice": "ملاحظة: على الويب، تتطلب الإشعارات أن يكون المتصفح مفتوحًا.",
+        "about": "القرآن وأوقات الصلاة الإصدار 1.0",
+        "aboutDesc": "مبني على معايير تطبيقات React Native، مُعدّل للويب (React SPA). البيانات مقدمة من Aladhan.com و AlQuran.cloud.",
+        "calcMethods": {
+            "1": "جامعة العلوم الإسلامية، كراتشي",
+            "2": "الجمعية الإسلامية لأمريكا الشمالية (ISNA)",
+            "3": "رابطة العالم الإسلامي (MWL)",
+            "4": "جامعة أم القرى، مكة المكرمة",
+            "5": "الهيئة المصرية العامة للمساحة",
+            "12": "اتحاد المنظمات الإسلامية في فرنسا",
+            "13": "رئاسة الشؤون الدينية، تركيا"
+        }
+    }
+}

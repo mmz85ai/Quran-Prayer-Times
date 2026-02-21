@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { BookOpen, Clock, Settings, Heart, Moon, Sun } from 'lucide-react';
 
 interface LayoutProps {
@@ -16,15 +17,17 @@ export const Layout: React.FC<LayoutProps> = ({
   isDark,
   toggleTheme
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={`flex flex-col h-screen overflow-hidden ${isDark ? 'dark' : ''}`}>
-      {/* Top Bar - Simplified for Web App */}
+      {/* Top Bar */}
       <header className="flex-none bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 flex justify-between items-center z-10 shadow-sm">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-amiri text-xl pb-1">☪</span>
           </div>
-          <h1 className="text-lg font-bold text-slate-800 dark:text-white">Quran & Prayer</h1>
+          <h1 className="text-lg font-bold text-slate-800 dark:text-white">{t('app.title')}</h1>
         </div>
         <button
           onClick={toggleTheme}
@@ -53,7 +56,7 @@ export const Layout: React.FC<LayoutProps> = ({
               }`}
           >
             <Clock size={24} strokeWidth={activeTab === 'prayer' ? 2.5 : 2} />
-            <span className="text-xs font-medium">Prayer</span>
+            <span className="text-xs font-medium">{t('nav.prayer')}</span>
           </button>
 
           <button
@@ -64,7 +67,7 @@ export const Layout: React.FC<LayoutProps> = ({
               }`}
           >
             <BookOpen size={24} strokeWidth={activeTab === 'quran' ? 2.5 : 2} />
-            <span className="text-xs font-medium">Quran</span>
+            <span className="text-xs font-medium">{t('nav.quran')}</span>
           </button>
 
           <button
@@ -75,7 +78,7 @@ export const Layout: React.FC<LayoutProps> = ({
               }`}
           >
             <Heart size={24} strokeWidth={activeTab === 'adhkar' ? 2.5 : 2} />
-            <span className="text-xs font-medium">Adhkar</span>
+            <span className="text-xs font-medium">{t('nav.adhkar')}</span>
           </button>
 
           <button
@@ -86,7 +89,7 @@ export const Layout: React.FC<LayoutProps> = ({
               }`}
           >
             <Settings size={24} strokeWidth={activeTab === 'settings' ? 2.5 : 2} />
-            <span className="text-xs font-medium">Settings</span>
+            <span className="text-xs font-medium">{t('nav.settings')}</span>
           </button>
         </div>
       </nav>

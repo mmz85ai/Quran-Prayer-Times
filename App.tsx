@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Layout } from './components/Layout';
 import { PrayerDashboard } from './components/PrayerDashboard';
 import { QuranReader } from './components/QuranReader';
@@ -9,6 +10,8 @@ import { AppSettings, PrayerResponseData, UserLocation } from './types';
 import { DEFAULT_LOCATION } from './constants';
 
 const App: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
   // Navigation State
   const [activeTab, setActiveTab] = useState<'prayer' | 'quran' | 'adhkar' | 'settings'>('prayer');
 
@@ -25,7 +28,7 @@ const App: React.FC = () => {
 
   // Location State
   const [location, setLocation] = useState<UserLocation | null>(null);
-  const [locationName, setLocationName] = useState<string>('Detecting Location...');
+  const [locationName, setLocationName] = useState<string>(t('app.detectingLocation'));
 
   // Data State
   const [prayerData, setPrayerData] = useState<PrayerResponseData | null>(null);
@@ -41,6 +44,13 @@ const App: React.FC = () => {
     }
     localStorage.setItem('appSettings', JSON.stringify(settings));
   }, [settings]);
+
+  // RTL & Language Direction Management
+  useEffect(() => {
+    const dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = dir;
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
 
   // Initial Location & Data Load
   useEffect(() => {
@@ -60,10 +70,10 @@ const App: React.FC = () => {
           });
           lat = position.coords.latitude;
           lng = position.coords.longitude;
-          locName = 'Current Location';
+          locName = t('app.currentLocation');
         } catch (e) {
           console.warn('Geolocation denied or failed, using default.');
-          setError('Location access denied. Using default (Makkah).');
+          setError(t('app.locationDenied'));
         }
       }
 
@@ -76,7 +86,7 @@ const App: React.FC = () => {
       if (data && data.data) {
         setPrayerData(data.data);
       } else {
-        setError('Failed to load prayer times. Please check your connection.');
+        setError(t('app.failedToLoad'));
       }
       setLoading(false);
     };
